@@ -10,22 +10,26 @@ private:
 	double num2;
 
 public:
-	double add(double num1, double num2) {
+
+	Calculator() {
+	}
+
+	double add() {
 		return (num1 + num2);
 	}
-	double multipy(double num1, double num2) {
+	double multipy() {
 		return (num1 * num2);
 	}
-	double subtract_1_2(double num1, double num2) {
+	double subtract_1_2() {
 		return (num1 - num2);
 	}
-	double subtract_2_1(double num1, double num2) {
+	double subtract_2_1() {
 		return (num2 - num1);
 	}
-	double divide_1_2(double num1, double num2) {
+	double divide_1_2() {
 		return (num1 / num2);
 	}
-	double divide_2_1(double num1, double num2) {
+	double divide_2_1() {
 		return (num2 / num1);
 	}
 
@@ -66,12 +70,12 @@ int main() {
 			std::cout << "Wrong input!" << std::endl << "Input num2: ";
 			std::cin >> num2;
 		}
-		std::cout << "num1 + num2 = " << calc.add(num1, num2) << std::endl;
-		std::cout << "num1 - num2 = " << calc.subtract_1_2(num1, num2) << std::endl;
-		std::cout << "num2 - num1 = " << calc.subtract_2_1(num1, num2) << std::endl;
-		std::cout << "num1 * num2 = " << calc.multipy(num1, num2) << std::endl;
-		std::cout << "num1 / num2 = " << calc.divide_1_2(num1, num2) << std::endl;
-		std::cout << "num2 / num1 = " << calc.subtract_2_1(num1, num2) << std::endl;
+		std::cout << "num1 + num2 = " << calc.add() << std::endl;
+		std::cout << "num1 - num2 = " << calc.subtract_1_2() << std::endl;
+		std::cout << "num2 - num1 = " << calc.subtract_2_1() << std::endl;
+		std::cout << "num1 * num2 = " << calc.multipy() << std::endl;
+		std::cout << "num1 / num2 = " << calc.divide_1_2() << std::endl;
+		std::cout << "num2 / num1 = " << calc.divide_2_1() << std::endl;
 		std::cout << "In case you want to continue insert \"1\", but if you want to end up insert \"0\"  ";
 		std::cin >> a;
 	} while (a == 1);
