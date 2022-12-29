@@ -4,9 +4,9 @@
 
 #include <iostream>
 #include <fstream>
-#include <string.h>
+#include <string>
 
-enum Letters {
+/*enum Letters {
 	A = 1,
 	B,
 	C,
@@ -33,64 +33,47 @@ enum Letters {
 	X,
 	Y,
 	Z
+};*/
+
+class Address {
+public:
+	std::string City;
+	std::string Street;
+	int House;
+	int Flat;
 };
 
-void func() {
+int main() {
 	int N;
 	std::ifstream in("in.txt");
 	if (in.is_open()) {
 		in >> N;
+		Address* array = new Address[N];
+		for (int i = 0; i < N; ++i) {
+			in >> array[i].City;
+			in >> array[i].Street;
+			in >> array[i].House;
+			in >> array[i].Flat;
+		}
+		in.close();
+		for (int i = 0; i < N; ++i) {
+			for (int j = 0; j < N - 1; ++j) {
+				if (array[j].City[0] > array[j+1].City[0]) {
+					std::swap(array[j], array[j+1]);
+				}
+			}
+		}
 		std::ofstream out("out.txt");
 		if (out.is_open()) {
 			out << N << std::endl;
-			std::string *City = new std::string[N];
-			std::string *Street = new std::string[N];
-			int *House = new int[N];
-			int *Flat = new int[N];
 			for (int i = 0; i < N; ++i) {
-				in >> City[i];
-				in >> Street[i];
-				in >> House[i];
-				in >> Flat[i];
+				out << array[i].City << ", ";
+				out << array[i].Street << ", ";
+				out << array[i].House << ", ";
+				out << array[i].Flat << std::endl;
 			}
-			in.close();
-			int* numbers = new int[N];
-			for (int i = 0; i < N; ++i) {
-				std::string s = City[i];
-				char c = s[0];
-				Letters l = static_cast<Letters>(c);
-				numbers[i] = l;
-			}
-
-			for (int i = 0; i < N; ++i) {
-				for (int j = 0; j < N - 1; ++j) {
-					if (numbers[j] > numbers[j + 1]) {
-						std::swap(City[j], City[j + 1]);
-						std::swap(House[j], House[j + 1]);
-						std::swap(Street[j], Street[j + 1]);
-						std::swap(Flat[j], Flat[j + 1]);
-						std::swap(numbers[j], numbers[j + 1]);
-					}
-				}
-			}
-
-			for (int i = 0; i < N; ++i) {
-				out << City[i] << ", ";
-				out << Street[i] << ", ";
-				out << House[i] << ", ";
-				out << Flat[i] << std::endl;
-			}
-			delete[] numbers;
 			out.close();
-			delete[] City;
-			delete[] Street;
-			delete[] House;
-			delete[] Flat;
 		}
+		delete[] array;
 	}
-}
-
-
-int main() {
-	func();
 }

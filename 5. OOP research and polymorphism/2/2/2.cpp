@@ -4,31 +4,23 @@
 //Значения используйте произвольные.
 
 #include <iostream>
+#include <string>
 
-class Triangle {
+class Figure {
 protected:
-	int a, b, c;
-	int A, B, C;
+	std::string name;
 public:
-	int get_a() {
-		return a;
+	int a, b, c, d;
+	int A, B, C, D;
+	std::string get() {
+		return name;
 	}
-	int get_b() {
-		return b;
-	}
-	int get_c() {
-		return c;
-	}
-	int get_A() {
-		return A;
-	}
-	int get_B() {
-		return B;
-	}
-	int get_C() {
-		return C;
-	}
+};
+
+class Triangle : public Figure{
+public:
 	Triangle() {
+		name = "Triangle";
 		a = 10;
 		b = 20;
 		c = 30;
@@ -36,11 +28,17 @@ public:
 		B = 60;
 		C = 70;
 	}
+
+	void print_info(Triangle* p) {
+		std::cout << get() << std::endl << "Sides: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
+		std::cout << "Angles: " << "A=" << A << " B=" << B << " C=" << C << std::endl << std::endl;
+	}
 };
 
 class rightTriangle : public Triangle {
 public:
 	rightTriangle() {
+		name = "rightTriangle";
 		a = 10;
 		b = 20;
 		c = 30;
@@ -53,6 +51,7 @@ public:
 class isoscelesTriangle : public Triangle {
 public:
 	isoscelesTriangle() {
+		name = "isoscelesTriangle";
 		a = 10;
 		b = 20;
 		c = 10;
@@ -65,45 +64,20 @@ public:
 class equilateralTriangle : public Triangle {
 public:
 	equilateralTriangle() {
+		name = "equilateralTriangle";
 		a = 30;
 		b = 30;
-		c = 30;
+		c = 30; 
 		A = 60;
 		B = 60;
 		C = 60;
 	}
 };
 
-class qadrilateral {
-protected:
-	int a, b, c, d;
-	int A, B, C, D;
+class qadrilateral : public Figure {
 public:
-	int get_a() {
-		return a;
-	}
-	int get_b() {
-		return b;
-	}
-	int get_c() {
-		return c;
-	}
-	int get_d() {
-		return d;
-	}
-	int get_A() {
-		return A;
-	}
-	int get_B() {
-		return B;
-	}
-	int get_C() {
-		return C;
-	}
-	int get_D() {
-		return D;
-	}
 	qadrilateral() {
+		name = "qadrilateral";
 		a = 10;
 		b = 20;
 		c = 10;
@@ -113,11 +87,16 @@ public:
 		C = 90;
 		D = 90;
 	}
+	void print_info(qadrilateral* p) {
+		std::cout << get() << std::endl << "Sides: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
+		std::cout << "Angles: " << "A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl << std::endl;;
+	}
 };
 
 class square : public qadrilateral {
 public:
 	square() {
+		name = "square";
 		a = 20;
 		b = 20;
 		c = 20;
@@ -132,6 +111,7 @@ public:
 class parallelogram : public qadrilateral {
 public:
 	parallelogram() {
+		name = "parallelogram";
 		a = 20;
 		b = 30;
 		c = 20;
@@ -146,6 +126,7 @@ public:
 class rhombus : public qadrilateral {
 public:
 	rhombus() {
+		name = "rhombus";
 		a = 30;
 		b = 30;
 		c = 30;
@@ -156,15 +137,6 @@ public:
 		D = 40;
 	}
 };
-
-void print_info(Triangle* p) {
-	std::cout << "Sides: " << "a=" << p->get_a() << " b=" << p->get_b() << " c=" << p->get_c() << std::endl;
-	std::cout << "Angles: " << "A=" << p->get_A() << " B=" << p->get_B() << " C=" << p->get_C() << std::endl << std::endl;
-}
-void print_info(qadrilateral* p) {
-	std::cout << "Sides: " << "a=" << p->get_a() << " b=" << p->get_b() << " c=" << p->get_c() << " d=" << p->get_d() << std::endl;
-	std::cout << "Angles: " << "A=" << p->get_A() << " B=" << p->get_B() << " C=" << p->get_C() << " D=" << p->get_D() << std::endl << std::endl;;
-}
 
 int main() {
 	Triangle t1;
@@ -183,22 +155,13 @@ int main() {
 	qadrilateral* pq2 = &q2;
 	qadrilateral* pq3 = &q3;
 	qadrilateral* pq4 = &q4;
-	std::cout << "Triangle:" << std::endl;
-	print_info(pt1);
-	std::cout << "rightTriangle:" << std::endl;
-	print_info(pt2);
-	std::cout << "isoscelesTriangle:" << std::endl;
-	print_info(pt3);
-	std::cout << "equilateralTriangle:" << std::endl;
-	print_info(pt4);
-	std::cout << "qadrilateral:" << std::endl;
-	print_info(pq1);
-	std::cout << "square:" << std::endl;
-	print_info(pq2);
-	//return 0;
+	pt1->print_info(pt1);
+	pt2->print_info(pt2);
+	pt3->print_info(pt3);
+	pt4->print_info(pt4);
+	pq1->print_info(pq1);
+	pq2->print_info(pq2);
 	system("pause");
-	std::cout << "parallelogram:" << std::endl;
-	print_info(pq3);
-	std::cout << "rhombus:" << std::endl;
-	print_info(pq4);
+	pq3->print_info(pq3);
+	pq4->print_info(pq4);
 }

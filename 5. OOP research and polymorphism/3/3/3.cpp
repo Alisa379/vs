@@ -10,9 +10,7 @@ protected:
 	bool right = 1;
 	int sides = 0;
 	std::string name = "Figure";
-
-public:
-	void check() {
+	virtual void check() {
 		if (right) {
 			std::cout << "right" << std::endl;
 		}
@@ -20,7 +18,8 @@ public:
 			std::cout << "wrong" << std::endl;
 		}
 	}
-	void info_() {
+public:
+	virtual void info() {
 		std::cout << name << ":" << std::endl;
 		check();
 		std::cout << "Amount of sides: " << sides << std::endl << std::endl;
@@ -35,17 +34,17 @@ public:
 	}
 	int a = 10, b = 20, c = 30;
 	int A = 50, B = 60, C = 70;
-	void checkout() {
+	void check() override {
 		if (sides == 3 && A + B + C == 180) {
 			right = 1;
 		}
 		else {
 			right = 0;
 		}
+		Figure::check();
 	}
-	void info() {
+	void info() override {
 		std::cout << name << ":" << std::endl;
-		checkout();
 		check();
 		std::cout << "Amount of sides: " << sides << std::endl;
 		std::cout << "Sides: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
@@ -59,17 +58,14 @@ public:
 		name = "rightTriangle";
 		C = 90;
 	}
-	void checkout1() {
-		if (c == 90 && sides == 3 && A + B + C == 180) {
+	void check() override {
+		if (c == 90) {
 			right = 1;
 		}
-		else {
-			right = 0;
-		}
+		Triangle::check();
 	}
-	void info1() {
+	void info() override {
 		std::cout << name << ":" << std::endl;
-		checkout1();
 		check();
 		std::cout << "Amount of sides: " << sides << std::endl;
 		std::cout << "Sides: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
@@ -84,17 +80,17 @@ public:
 		B = 40;
 		C = 90;
 	}
-	void checkout2() {
-		if (C == 90 && sides == 3 && A + B + C == 180) {
+	void check() override {
+		if (C == 90) {
 			right = 1;
 		}
 		else {
 			right = 0;
 		}
+		Triangle::check();
 	}
-	void info2() {
+	void info() override {
 		std::cout << name << ":" << std::endl;
-		checkout2();
 		check();
 		std::cout << "Amount of sides: " << sides << std::endl;
 		std::cout << "Sides: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
@@ -110,17 +106,17 @@ public:
 		B = 60;
 		C = 50;
 	}
-	void checkout3() {
-		if (a == c && sides == 3 && A + B + C == 180 && A == C) {
+	void check() override {
+		if (a == c && A == C) {
 			right = 1;
 		}
 		else {
 			right = 0;
 		}
+		Triangle::check();
 	}
-	void info3() {
+	void info() override {
 		std::cout << name << ":" << std::endl;
-		checkout3();
 		check();
 		std::cout << "Amount of sides: " << sides << std::endl;
 		std::cout << "Sides: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
@@ -138,17 +134,17 @@ public:
 		A = 60;
 		C = 60;
 	}
-	void checkout4() {
-		if (a == b && b == c && sides == 3 && sides == 3 && A == 60 && B == 60 && C == 60) {
+	void check() override {
+		if (a == b && b == c && A == 60 && B == 60 && C == 60) {
 			right = 1;
 		}
 		else {
 			right = 0;
 		}
+		Triangle::check();
 	}
-	void info4() {
+	void info() override {
 		std::cout << name << ":" << std::endl;
-		checkout4();
 		check();
 		std::cout << "Amount of sides: " << sides << std::endl;
 		std::cout << "Sides: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
@@ -164,17 +160,17 @@ public:
 	}
 	int a = 10, b = 20, c = 30, d = 40;
 	int A = 50, B = 60, C = 70, D = 80;
-	void checkout() {
+	void check() override {
 		if (sides == 4 && A + B + C + D == 360) {
 			right = 1;
 		}
 		else {
 			right = 0;
 		}
+		Figure::check();
 	}
-	void info() {
+	void info() override {
 		std::cout << name << ":" << std::endl;
-		checkout();
 		check();
 		std::cout << "Amount of sides: " << sides << std::endl;
 		std::cout << "Sides: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
@@ -190,17 +186,17 @@ public:
 	}
 	int a = 20, b = 20, c = 20, d = 20;
 	int A = 90, B = 90, C = 90, D = 90;
-	void checkout1() {
-		if (sides == 4 && a == b && b == c && c == d && A == 90 && B == 90 && C == 90 && D == 90) {
+	void check() override {
+		if (a == b && b == c && c == d && A == 90 && B == 90 && C == 90 && D == 90) {
 			right = 1;
 		}
 		else {
 			right = 0;
 		}
+		qadrilateral::check();
 	}
-	void info1() {
+	void info() override {
 		std::cout << name << ":" << std::endl;
-		checkout1();
 		check();
 		std::cout << "Amount of sides: " << sides << std::endl;
 		std::cout << "Sides: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
@@ -216,17 +212,17 @@ public:
 	}
 	int a = 20, b = 30, c = 20, d = 30;
 	int A = 30, B = 40, C = 30, D = 40;
-	void checkout2() {
-		if (sides == 4 && a == c && b == d && A == C && B == D && A + B + C + D == 360) {
+	void check() override {
+		if (a == c && b == d && A == C && B == D) {
 			right = 1;
 		}
 		else {
 			right = 0;
 		}
+		qadrilateral::check();
 	}
-	void info2() {
+	void info() override {
 		std::cout << name << ":" << std::endl;
-		checkout2();
 		check();
 		std::cout << "Amount of sides: " << sides << std::endl;
 		std::cout << "Sides: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
@@ -242,17 +238,17 @@ public:
 	}
 	int a = 30, b = 30, c = 30, d = 30;
 	int A = 30, B = 40, C = 30, D = 40;
-	void checkout3() {
-		if (sides == 4 && a == b && b == c && c == d && A == C && B == D && A + B + C + D == 360) {
+	void check() override {
+		if (a == b && b == c && c == d && A == C && B == D) {
 			right = 1;
 		}
 		else {
 			right = 0;
 		}
+		qadrilateral::check();
 	}
-	void info3() {
+	void info() override {
 		std::cout << name << ":" << std::endl;
-		checkout3();
 		check();
 		std::cout << "Amount of sides: " << sides << std::endl;
 		std::cout << "Sides: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
@@ -268,17 +264,17 @@ public:
 	}
 	int a = 10, b = 20, c = 10, d = 20;
 	int A = 90, B = 90, C = 90, D = 90;
-	void checkout4() {
-		if (sides == 4 && a == c && b == d && A == 90 && B == 90 && C == 90 && D == 90) {
+	void check() override {
+		if (a == c && b == d && A == 90 && B == 90 && C == 90 && D == 90) {
 			right = 1;
 		}
 		else {
 			right = 0;
 		}
+		qadrilateral::check();
 	}
-	void info4() {
+	void info() override {
 		std::cout << name << ":" << std::endl;
-		checkout4();
 		check();
 		std::cout << "Amount of sides: " << sides << std::endl;
 		std::cout << "Sides: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
@@ -288,28 +284,28 @@ public:
 
 int main() {
 	Figure f1;
-	f1.info_();
+	f1.info();
 	Triangle f2;
 	f2.info();
 	rightTriangle f3;
-	f3.info1();
+	f3.info();
 	system("pause");
 	rightTriangle1 f4;
-	f4.info2();
+	f4.info();
 	isoscelesTriangle f5;
-	f5.info3();
+	f5.info();
 	equilateralTriangle f6;
-	f6.info4();
+	f6.info();
 	system("pause");
 	qadrilateral f7;
 	f7.info();
 	square f8;
-	f8.info1();
+	f8.info();
 	parallelogram f9;
-	f9.info2();
+	f9.info();
 	system("pause");
 	rhombus f10;
-	f10.info3();
+	f10.info();
 	rectangle f11;
-	f11.info4();
+	f11.info();
 }

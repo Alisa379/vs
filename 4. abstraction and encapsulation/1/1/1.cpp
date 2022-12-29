@@ -1,55 +1,39 @@
-﻿// В этом задании вы будете читать адреса из файла и выводить их в другой файл в другом формате.
-
-#include <iostream>
+﻿#include <iostream>
 #include <fstream>
-#include <string.h>
+#include <string>
 
 class Address {
 public:
-	int N;
-	int stock;
-	std::string sstock;
-
-	Address() {
-		std::ifstream file("in.txt");
-		if (file.is_open()) {
-			file >> N;;
-			file.close();
-		}
-	}
-
-	void newFile() {
-		std::ofstream newfile("out.txt", std::ios::app);
-		if (newfile.is_open()) {
-			newfile << N << std::endl;
-		}
-		for (int i = N - 1; i >= 0; --i) {
-			std::ifstream file("in.txt");
-			if (file.is_open() && newfile.is_open()) {
-				file >> stock;
-				for (int j = 0; j < i; ++j) {
-					file >> sstock;
-					file >> sstock;
-					file >> stock;
-					file >> stock;
-				}
-				file >> sstock;
-				newfile << sstock << ", ";
-				file >> sstock;
-				newfile << sstock << ", ";
-				file >> stock;
-				newfile << stock << ", ";
-				file >> stock;
-				newfile << stock << std::endl;
-				file.close();
-			}
-		}
-		newfile.close();
-	}
-
+	std::string City;
+	std::string Street;
+	int House;
+	int Flat;
 };
 
 int main() {
-	Address ad;
-	ad.newFile();
+	int N;
+	std::ifstream in("in.txt");
+	if (in.is_open()) {
+		in >> N;
+		Address *array = new Address[N];
+		for (int i = 0; i < N; ++i) {
+			in >> array[i].City;
+			in >> array[i].Street;
+			in >> array[i].House;
+			in >> array[i].Flat;
+		}
+		in.close();
+		std::ofstream out("out.txt");
+		if (out.is_open()) {
+			out << N << std::endl;
+			for (int i = N-1; i >= 0; --i) {
+				out << array[i].City << ", ";
+				out << array[i].Street << ", ";
+				out << array[i].House << ", ";
+				out << array[i].Flat << std::endl;
+			}
+			out.close();
+		}
+		delete[] array;
+	}
 }
