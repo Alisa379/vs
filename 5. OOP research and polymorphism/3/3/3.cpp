@@ -3,12 +3,13 @@
 //Продемонструйте их работу: создайте по одному экземпляру каждой фигуры и выведите на экран информацию о фигурах.
 
 #include <iostream>
-#include <string.h>
 
 class Figure {
 protected:
 	bool right = 1;
 	int sides = 0;
+	int a, b, c, d;
+	int A, B, C, D;
 	std::string name = "Figure";
 	virtual void check() {
 		if (right) {
@@ -29,11 +30,15 @@ public:
 class Triangle : public Figure {
 public:
 	Triangle() {
-		sides = 3;
 		name = "Triangle";
+		sides = 3;
+		a = 10;
+		b = 20;
+		c = 30;
+		A = 50;
+		B = 60;
+		C = 70;
 	}
-	int a = 10, b = 20, c = 30;
-	int A = 50, B = 60, C = 70;
 	void check() override {
 		if (sides == 3 && A + B + C == 180) {
 			right = 1;
@@ -56,6 +61,11 @@ class rightTriangle : public Triangle {
 public:
 	rightTriangle() {
 		name = "rightTriangle";
+		a = 10;
+		b = 20;
+		c = 30;
+		A = 50;
+		B = 60;
 		C = 90;
 	}
 	void check() override {
@@ -64,37 +74,18 @@ public:
 		}
 		Triangle::check();
 	}
-	void info() override {
-		std::cout << name << ":" << std::endl;
-		check();
-		std::cout << "Amount of sides: " << sides << std::endl;
-		std::cout << "Sides: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
-		std::cout << "Angles: " << "A=" << A << " B=" << B << " C=" << C << std::endl << std::endl;
-	}
 };
 
 class rightTriangle1 : public Triangle {
 public:
 	rightTriangle1() {
 		name = "rightTriangle";
+		a = 10;
+		b = 20;
+		c = 30;
+		A = 50;
 		B = 40;
 		C = 90;
-	}
-	void check() override {
-		if (C == 90) {
-			right = 1;
-		}
-		else {
-			right = 0;
-		}
-		Triangle::check();
-	}
-	void info() override {
-		std::cout << name << ":" << std::endl;
-		check();
-		std::cout << "Amount of sides: " << sides << std::endl;
-		std::cout << "Sides: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
-		std::cout << "Angles: " << "A=" << A << " B=" << B << " C=" << C << std::endl << std::endl;
 	}
 };
 
@@ -102,6 +93,9 @@ class isoscelesTriangle : public Triangle {
 public:
 	isoscelesTriangle() {
 		name = "isoscelesTriangle";
+		a = 10;
+		b = 20;
+		A = 50;
 		c = 10;
 		B = 60;
 		C = 50;
@@ -115,13 +109,6 @@ public:
 		}
 		Triangle::check();
 	}
-	void info() override {
-		std::cout << name << ":" << std::endl;
-		check();
-		std::cout << "Amount of sides: " << sides << std::endl;
-		std::cout << "Sides: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
-		std::cout << "Angles: " << "A=" << A << " B=" << B << " C=" << C << std::endl << std::endl;
-	}
 };
 
 class equilateralTriangle : public Triangle {
@@ -132,6 +119,7 @@ public:
 		b = 30;
 		c = 30;
 		A = 60;
+		B = 60;
 		C = 60;
 	}
 	void check() override {
@@ -143,23 +131,22 @@ public:
 		}
 		Triangle::check();
 	}
-	void info() override {
-		std::cout << name << ":" << std::endl;
-		check();
-		std::cout << "Amount of sides: " << sides << std::endl;
-		std::cout << "Sides: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
-		std::cout << "Angles: " << "A=" << A << " B=" << B << " C=" << C << std::endl << std::endl;
-	}
 };
 
 class qadrilateral : public Figure {
 public:
 	qadrilateral() {
-		sides = 4;
 		name = "qadrilateral";
+		sides = 4;
+		a = 10;
+		b = 20;
+		c = 30;
+		d = 40;
+		A = 50;
+		B = 60;
+		C = 70;
+		D = 80;
 	}
-	int a = 10, b = 20, c = 30, d = 40;
-	int A = 50, B = 60, C = 70, D = 80;
 	void check() override {
 		if (sides == 4 && A + B + C + D == 360) {
 			right = 1;
@@ -181,11 +168,18 @@ public:
 class square : public qadrilateral {
 public:
 	square() {
-		sides = 4;
 		name = "square";
+		sides = 4;
+		a = 20;
+		b = 20;
+		c = 20;
+		d = 20;
+		A = 90;
+		B = 90;
+		C = 90;
+		D = 90;
 	}
-	int a = 20, b = 20, c = 20, d = 20;
-	int A = 90, B = 90, C = 90, D = 90;
+	
 	void check() override {
 		if (a == b && b == c && c == d && A == 90 && B == 90 && C == 90 && D == 90) {
 			right = 1;
@@ -195,23 +189,23 @@ public:
 		}
 		qadrilateral::check();
 	}
-	void info() override {
-		std::cout << name << ":" << std::endl;
-		check();
-		std::cout << "Amount of sides: " << sides << std::endl;
-		std::cout << "Sides: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
-		std::cout << "Angles: " << "A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl << std::endl;
-	}
 };
 
 class parallelogram : public qadrilateral {
 public:
 	parallelogram() {
-		sides = 4;
 		name = "parallelogram";
+		sides = 4;
+		a = 20;
+		b = 30;
+		c = 20;
+		d = 30;
+		A = 30;
+		B = 40;
+		C = 30;
+		D = 40;
 	}
-	int a = 20, b = 30, c = 20, d = 30;
-	int A = 30, B = 40, C = 30, D = 40;
+	
 	void check() override {
 		if (a == c && b == d && A == C && B == D) {
 			right = 1;
@@ -221,23 +215,23 @@ public:
 		}
 		qadrilateral::check();
 	}
-	void info() override {
-		std::cout << name << ":" << std::endl;
-		check();
-		std::cout << "Amount of sides: " << sides << std::endl;
-		std::cout << "Sides: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
-		std::cout << "Angles: " << "A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl << std::endl;
-	}
 };
 
 class rhombus : public qadrilateral {
 public:
 	rhombus() {
-		sides = 4;
 		name = "rhombus";
+		sides = 4;
+		a = 30;
+		b = 30;
+		c = 30;
+		d = 30;
+		A = 30;
+		B = 40;
+		C = 30;
+		D = 40;
 	}
-	int a = 30, b = 30, c = 30, d = 30;
-	int A = 30, B = 40, C = 30, D = 40;
+	
 	void check() override {
 		if (a == b && b == c && c == d && A == C && B == D) {
 			right = 1;
@@ -247,23 +241,23 @@ public:
 		}
 		qadrilateral::check();
 	}
-	void info() override {
-		std::cout << name << ":" << std::endl;
-		check();
-		std::cout << "Amount of sides: " << sides << std::endl;
-		std::cout << "Sides: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
-		std::cout << "Angles: " << "A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl << std::endl;
-	}
 };
 
 class rectangle : public qadrilateral {
 public:
 	rectangle() {
-		sides = 4;
 		name = "rectangle";
+		sides = 4;
+		a = 10;
+		b = 20;
+		c = 10;
+		d = 20;
+		A = 90;
+		B = 90;
+		C = 90;
+		D = 90;
 	}
-	int a = 10, b = 20, c = 10, d = 20;
-	int A = 90, B = 90, C = 90, D = 90;
+	
 	void check() override {
 		if (a == c && b == d && A == 90 && B == 90 && C == 90 && D == 90) {
 			right = 1;
@@ -272,13 +266,6 @@ public:
 			right = 0;
 		}
 		qadrilateral::check();
-	}
-	void info() override {
-		std::cout << name << ":" << std::endl;
-		check();
-		std::cout << "Amount of sides: " << sides << std::endl;
-		std::cout << "Sides: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
-		std::cout << "Angles: " << "A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl << std::endl;
 	}
 };
 
@@ -289,21 +276,18 @@ int main() {
 	f2.info();
 	rightTriangle f3;
 	f3.info();
-	system("pause");
 	rightTriangle1 f4;
 	f4.info();
 	isoscelesTriangle f5;
 	f5.info();
 	equilateralTriangle f6;
 	f6.info();
-	system("pause");
 	qadrilateral f7;
 	f7.info();
 	square f8;
 	f8.info();
 	parallelogram f9;
 	f9.info();
-	system("pause");
 	rhombus f10;
 	f10.info();
 	rectangle f11;

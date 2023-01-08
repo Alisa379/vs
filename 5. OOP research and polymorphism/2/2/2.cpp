@@ -4,20 +4,15 @@
 //Значения используйте произвольные.
 
 #include <iostream>
-#include <string>
 
 class Figure {
 protected:
 	std::string name;
-public:
 	int a, b, c, d;
 	int A, B, C, D;
-	std::string get() {
-		return name;
-	}
 };
 
-class Triangle : public Figure{
+class Triangle : public Figure {
 public:
 	Triangle() {
 		name = "Triangle";
@@ -28,9 +23,8 @@ public:
 		B = 60;
 		C = 70;
 	}
-
-	void print_info(Triangle* p) {
-		std::cout << get() << std::endl << "Sides: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
+	void getInfo() {
+		std::cout << name << std::endl << "Sides: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
 		std::cout << "Angles: " << "A=" << A << " B=" << B << " C=" << C << std::endl << std::endl;
 	}
 };
@@ -87,9 +81,9 @@ public:
 		C = 90;
 		D = 90;
 	}
-	void print_info(qadrilateral* p) {
-		std::cout << get() << std::endl << "Sides: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
-		std::cout << "Angles: " << "A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl << std::endl;;
+	void getInfo() {
+		std::cout << name << std::endl << "Sides: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
+		std::cout << "Angles: " << "A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl << std::endl;
 	}
 };
 
@@ -139,29 +133,20 @@ public:
 };
 
 int main() {
-	Triangle t1;
-	rightTriangle t2;
-	isoscelesTriangle t3;
-	equilateralTriangle t4;
-	qadrilateral q1;
-	square q2;
-	parallelogram q3;
-	rhombus q4;
-	Triangle* pt1 = &t1;
-	Triangle* pt2 = &t2;
-	Triangle* pt3 = &t3;
-	Triangle* pt4 = &t4;
-	qadrilateral* pq1 = &q1;
-	qadrilateral* pq2 = &q2;
-	qadrilateral* pq3 = &q3;
-	qadrilateral* pq4 = &q4;
-	pt1->print_info(pt1);
-	pt2->print_info(pt2);
-	pt3->print_info(pt3);
-	pt4->print_info(pt4);
-	pq1->print_info(pq1);
-	pq2->print_info(pq2);
-	system("pause");
-	pq3->print_info(pq3);
-	pq4->print_info(pq4);
+	Triangle f1;
+	f1.getInfo();
+	rightTriangle f2;
+	f2.getInfo();
+	isoscelesTriangle f3;
+	f3.getInfo();
+	equilateralTriangle f4;
+	f4.getInfo();
+	qadrilateral f5;
+	f5.getInfo();
+	square f6;
+	f6.getInfo();
+	parallelogram f7;
+	f7.getInfo();
+	rhombus f8;
+	f8.getInfo();
 }
