@@ -1,5 +1,5 @@
 ﻿#include <iostream>
-#define SUB(x, y) (x-y)
+#define SUB(x, y) ((x)-(y))
 
 int main()
 {
@@ -8,7 +8,7 @@ int main()
 	int c = 2;
 	std::cout << SUB(a, b) << std::endl;
 	std::cout << SUB(a, b) * c << std::endl;
-	std::cout << SUB(a, (b + c)) * c << std::endl;
+	std::cout << SUB(a, b + c) * c << std::endl;
 }
 
 
