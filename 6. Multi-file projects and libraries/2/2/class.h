@@ -1,19 +1,11 @@
-#include <iostream>
+#pragma once
 
 class Counter {
 private:
 	int a;
 public:
-	Counter(int a) {
-		this->a = a;
-	}
-	void increment() {
-		a++;
-	}
-	void decrement() {
-		a--;
-	}
-	int rt() {
-		return a;
-	}
+	Counter(int a);
+	void increment();
+	void decrement();
+	int rt();
 };

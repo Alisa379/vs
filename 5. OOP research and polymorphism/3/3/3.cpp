@@ -6,11 +6,17 @@
 
 class Figure {
 protected:
+	std::string name = "Figure";
 	bool right = 1;
 	int sides = 0;
 	int a, b, c, d;
 	int A, B, C, D;
-	std::string name = "Figure";
+	Figure(int sides, int a, int b, int c, int A, int B, int C) {
+
+	}
+	Figure(int sides, int a, int b, int c, int d, int A, int B, int C, int D) {
+
+	}
 	virtual void check() {
 		if (right) {
 			std::cout << "right" << std::endl;
@@ -19,7 +25,9 @@ protected:
 			std::cout << "wrong" << std::endl;
 		}
 	}
+	
 public:
+	Figure() {};
 	virtual void info() {
 		std::cout << name << ":" << std::endl;
 		check();
@@ -28,17 +36,19 @@ public:
 };
 
 class Triangle : public Figure {
+
 public:
-	Triangle() {
+	Triangle(int sides, int a, int b, int c, int A, int B, int C) : Figure(sides, a, b, c, A, B, C) {
 		name = "Triangle";
-		sides = 3;
-		a = 10;
-		b = 20;
-		c = 30;
-		A = 50;
-		B = 60;
-		C = 70;
+		this->sides = sides;
+		this->a = a;
+		this->b = b;
+		this->c = c;
+		this->A = a;
+		this->B = b;
+		this->C = C;
 	}
+
 	void check() override {
 		if (sides == 3 && A + B + C == 180) {
 			right = 1;
@@ -46,11 +56,12 @@ public:
 		else {
 			right = 0;
 		}
-		Figure::check();
 	}
+
 	void info() override {
 		std::cout << name << ":" << std::endl;
 		check();
+		Figure::check();
 		std::cout << "Amount of sides: " << sides << std::endl;
 		std::cout << "Sides: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
 		std::cout << "Angles: " << "A=" << A << " B=" << B << " C=" << C << std::endl << std::endl;
@@ -59,93 +70,82 @@ public:
 
 class rightTriangle : public Triangle {
 public:
-	rightTriangle() {
+	rightTriangle(int sides, int a, int b, int c, int A, int B, int C) : Triangle(sides, a, b, c, A, B, C) {
 		name = "rightTriangle";
-		a = 10;
-		b = 20;
-		c = 30;
-		A = 50;
-		B = 60;
-		C = 90;
+		this->a = a;
+		this->b = b;
+		this->c = c;
+		this->A = a;
+		this->B = b;
+		this->C = C;
 	}
 	void check() override {
+		Triangle::check();
 		if (c == 90) {
 			right = 1;
 		}
-		Triangle::check();
-	}
-};
-
-class rightTriangle1 : public Triangle {
-public:
-	rightTriangle1() {
-		name = "rightTriangle";
-		a = 10;
-		b = 20;
-		c = 30;
-		A = 50;
-		B = 40;
-		C = 90;
+		Figure::check();
 	}
 };
 
 class isoscelesTriangle : public Triangle {
 public:
-	isoscelesTriangle() {
+	isoscelesTriangle(int sides, int a, int b, int c, int A, int B, int C) : Triangle(sides, a, b, c, A, B, C) {
 		name = "isoscelesTriangle";
-		a = 10;
-		b = 20;
-		A = 50;
-		c = 10;
-		B = 60;
-		C = 50;
+		this->a = a;
+		this->b = b;
+		this->c = c;
+		this->A = a;
+		this->B = b;
+		this->C = C;
 	}
 	void check() override {
+		Triangle::check();
 		if (a == c && A == C) {
 			right = 1;
 		}
 		else {
 			right = 0;
 		}
-		Triangle::check();
+		Figure::check();
 	}
 };
 
 class equilateralTriangle : public Triangle {
 public:
-	equilateralTriangle() {
+	equilateralTriangle(int sides, int a, int b, int c, int A, int B, int C) : Triangle(sides, a, b, c, A, B, C) {
 		name = "equilateralTriangle";
-		a = 30;
-		b = 30;
-		c = 30;
-		A = 60;
-		B = 60;
-		C = 60;
+		this->a = a;
+		this->b = b;
+		this->c = c;
+		this->A = a;
+		this->B = b;
+		this->C = C;
 	}
 	void check() override {
+		Triangle::check();
 		if (a == b && b == c && A == 60 && B == 60 && C == 60) {
 			right = 1;
 		}
 		else {
 			right = 0;
 		}
-		Triangle::check();
+		Figure::check();
 	}
 };
 
 class qadrilateral : public Figure {
 public:
-	qadrilateral() {
+	qadrilateral(int sides, int a, int b, int c, int d, int A, int B, int C, int D) : Figure(sides, a, b, c, d, A, B, C, D) {
 		name = "qadrilateral";
-		sides = 4;
-		a = 10;
-		b = 20;
-		c = 30;
-		d = 40;
-		A = 50;
-		B = 60;
-		C = 70;
-		D = 80;
+		this->a = a;
+		this->b = b;
+		this->c = c;
+		this->d = d;
+		this->A = a;
+		this->B = b;
+		this->C = C;
+		this->D = D;
 	}
 	void check() override {
 		if (sides == 4 && A + B + C + D == 360) {
@@ -154,11 +154,13 @@ public:
 		else {
 			right = 0;
 		}
-		Figure::check();
+		
 	}
+
 	void info() override {
 		std::cout << name << ":" << std::endl;
 		check();
+		Figure::check();
 		std::cout << "Amount of sides: " << sides << std::endl;
 		std::cout << "Sides: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
 		std::cout << "Angles: " << "A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl << std::endl;
@@ -167,129 +169,129 @@ public:
 
 class square : public qadrilateral {
 public:
-	square() {
+	square(int sides, int a, int b, int c, int d, int A, int B, int C, int D) : qadrilateral(sides, a, b, c, d, A, B, C, D) {
 		name = "square";
-		sides = 4;
-		a = 20;
-		b = 20;
-		c = 20;
-		d = 20;
-		A = 90;
-		B = 90;
-		C = 90;
-		D = 90;
+		this->a = a;
+		this->b = b;
+		this->c = c;
+		this->d = d;
+		this->A = a;
+		this->B = b;
+		this->C = C;
+		this->D = D;
 	}
 	
 	void check() override {
+		qadrilateral::check();
 		if (a == b && b == c && c == d && A == 90 && B == 90 && C == 90 && D == 90) {
 			right = 1;
 		}
 		else {
 			right = 0;
 		}
-		qadrilateral::check();
+		Figure::check();
 	}
 };
 
 class parallelogram : public qadrilateral {
 public:
-	parallelogram() {
+	parallelogram(int sides, int a, int b, int c, int d, int A, int B, int C, int D) : qadrilateral(sides, a, b, c, d, A, B, C, D) {
 		name = "parallelogram";
-		sides = 4;
-		a = 20;
-		b = 30;
-		c = 20;
-		d = 30;
-		A = 30;
-		B = 40;
-		C = 30;
-		D = 40;
+		this->a = a;
+		this->b = b;
+		this->c = c;
+		this->d = d;
+		this->A = a;
+		this->B = b;
+		this->C = C;
+		this->D = D;
 	}
 	
 	void check() override {
+		qadrilateral::check();
 		if (a == c && b == d && A == C && B == D) {
 			right = 1;
 		}
 		else {
 			right = 0;
 		}
-		qadrilateral::check();
+		Figure::check();
 	}
 };
 
 class rhombus : public qadrilateral {
 public:
-	rhombus() {
+	rhombus(int sides, int a, int b, int c, int d, int A, int B, int C, int D) : qadrilateral(sides, a, b, c, d, A, B, C, D) {
 		name = "rhombus";
-		sides = 4;
-		a = 30;
-		b = 30;
-		c = 30;
-		d = 30;
-		A = 30;
-		B = 40;
-		C = 30;
-		D = 40;
+		this->a = a;
+		this->b = b;
+		this->c = c;
+		this->d = d;
+		this->A = a;
+		this->B = b;
+		this->C = C;
+		this->D = D;
 	}
 	
 	void check() override {
+		qadrilateral::check();
 		if (a == b && b == c && c == d && A == C && B == D) {
 			right = 1;
 		}
 		else {
 			right = 0;
 		}
-		qadrilateral::check();
+		Figure::check();
 	}
 };
 
 class rectangle : public qadrilateral {
 public:
-	rectangle() {
-		name = "rectangle";
-		sides = 4;
-		a = 10;
-		b = 20;
-		c = 10;
-		d = 20;
-		A = 90;
-		B = 90;
-		C = 90;
-		D = 90;
+	rectangle(int sides, int a, int b, int c, int d, int A, int B, int C, int D) : qadrilateral(sides, a, b, c, d, A, B, C, D) {
+		name = "rhombus";
+		this->a = a;
+		this->b = b;
+		this->c = c;
+		this->d = d;
+		this->A = a;
+		this->B = b;
+		this->C = C;
+		this->D = D;
 	}
 	
 	void check() override {
+		qadrilateral::check();
 		if (a == c && b == d && A == 90 && B == 90 && C == 90 && D == 90) {
 			right = 1;
 		}
 		else {
 			right = 0;
 		}
-		qadrilateral::check();
+		Figure::check();
 	}
 };
 
 int main() {
 	Figure f1;
 	f1.info();
-	Triangle f2;
+	Triangle f2(3, 10, 20, 30, 50, 60, 70);
 	f2.info();
-	rightTriangle f3;
+	rightTriangle f3(3, 10, 20, 30, 50, 60, 90);
 	f3.info();
-	rightTriangle1 f4;
+	rightTriangle f4(3, 10, 20, 10, 30, 60, 90);
 	f4.info();
-	isoscelesTriangle f5;
+	isoscelesTriangle f5(3, 10, 20, 10, 50, 60, 50);
 	f5.info();
-	equilateralTriangle f6;
+	equilateralTriangle f6(3, 30, 30, 30, 60, 60, 60);
 	f6.info();
-	qadrilateral f7;
+	qadrilateral f7(4, 10, 20, 10, 20, 90, 90, 90, 90);
 	f7.info();
-	square f8;
+	square f8(4, 20, 20, 20, 20, 90, 90, 90, 90);
 	f8.info();
-	parallelogram f9;
+	parallelogram f9(4, 20, 30, 20, 30, 30, 40, 30, 40);
 	f9.info();
-	rhombus f10;
+	rhombus f10(4, 30, 30, 30, 30, 30, 40, 30, 40);
 	f10.info();
-	rectangle f11;
+	rectangle f11(4, 10, 20, 10, 20, 90, 90, 90, 90);
 	f11.info();
 }

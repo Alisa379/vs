@@ -1,34 +1,15 @@
-﻿
-#include <iostream>
 #include "class.h"
+#include <iostream>
 
-int main() {
-	int a = 1;
-	bool x = 0;
-	std::string answer;
-	char command;
-	std::cout << "You want to set  counter's initual value? Input yes or no: ";
-	std::cin >> answer;
-	if (answer == "yes") {
-		std::cout << "Input counter's initual value: ";
-		std::cin >> a;
-	}
-	Counter num(a);
-	do {
-		std::cout << "Insert the command ('+', '-', '=' or 'x'): ";
-		std::cin >> command;
-		if (command == '+') {
-			num.increment();
-		}
-		if (command == '-') {
-			num.decrement();
-		}
-		if (command == '=') {
-			std::cout << num.rt() << std::endl;
-		}
-		if (command == 'x') {
-			x = 1;
-		}
-	} while (x == 0);
-	std::cout << "Goodbye!";
+Counter::Counter(int a) {
+	this->a = a;
+}
+void Counter::increment() {
+	a++;
+}
+void Counter::decrement() {
+	a--;
+}
+int Counter::rt() {
+	return a;
 }

@@ -15,11 +15,14 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="2.cpp">
+    <ClCompile Include="1.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="class.h">
       <Filter>Файлы заголовков</Filter>
+    </ClCompile>
+    <ClCompile Include="2.cpp">
+      <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

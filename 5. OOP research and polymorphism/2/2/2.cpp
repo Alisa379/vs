@@ -10,20 +10,26 @@ protected:
 	std::string name;
 	int a, b, c, d;
 	int A, B, C, D;
+	Figure(int a, int b, int c, int A, int B, int C) {
+
+	}
+	Figure(int a, int b, int c, int d, int A, int B, int C, int D) {
+
+	}
 };
 
 class Triangle : public Figure {
 public:
-	Triangle() {
+	Triangle(int a, int b, int c, int A, int B, int C) : Figure (a, b, c, A, B, C) {
 		name = "Triangle";
-		a = 10;
-		b = 20;
-		c = 30;
-		A = 50;
-		B = 60;
-		C = 70;
+		this->a = a;
+		this->b = b;
+		this->c = c;
+		this->A = a;
+		this->B = b;
+		this->C = C;
 	}
-	void getInfo() {
+	void print_info() {
 		std::cout << name << std::endl << "Sides: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
 		std::cout << "Angles: " << "A=" << A << " B=" << B << " C=" << C << std::endl << std::endl;
 	}
@@ -31,57 +37,57 @@ public:
 
 class rightTriangle : public Triangle {
 public:
-	rightTriangle() {
+	rightTriangle(int a, int b, int c, int A, int B, int C) : Triangle(a, b, c, A, B, C) {
 		name = "rightTriangle";
-		a = 10;
-		b = 20;
-		c = 30;
-		A = 50;
-		B = 60;
-		C = 90;
+		this->a = a;
+		this->b = b;
+		this->c = c;
+		this->A = a;
+		this->B = b;
+		this->C = C;
 	}
 };
 
 class isoscelesTriangle : public Triangle {
 public:
-	isoscelesTriangle() {
+	isoscelesTriangle(int a, int b, int c, int A, int B, int C) : Triangle(a, b, c, A, B, C) {
 		name = "isoscelesTriangle";
-		a = 10;
-		b = 20;
-		c = 10;
-		A = 50;
-		B = 60;
-		C = 50;
+		this->a = a;
+		this->b = b;
+		this->c = c;
+		this->A = a;
+		this->B = b;
+		this->C = C;
 	}
 };
 
 class equilateralTriangle : public Triangle {
 public:
-	equilateralTriangle() {
+	equilateralTriangle(int a, int b, int c, int A, int B, int C) : Triangle(a, b, c, A, B, C) {
 		name = "equilateralTriangle";
-		a = 30;
-		b = 30;
-		c = 30; 
-		A = 60;
-		B = 60;
-		C = 60;
+		this->a = a;
+		this->b = b;
+		this->c = c;
+		this->A = a;
+		this->B = b;
+		this->C = C;
 	}
 };
 
 class qadrilateral : public Figure {
 public:
-	qadrilateral() {
+	qadrilateral(int a, int b, int c, int d, int A, int B, int C, int D) : Figure(a, b, c, d, A, B, C, D) {
 		name = "qadrilateral";
-		a = 10;
-		b = 20;
-		c = 10;
-		d = 20;
-		A = 90;
-		B = 90;
-		C = 90;
-		D = 90;
+		this->a = a;
+		this->b = b;
+		this->c = c;
+		this->d = d;
+		this->A = a;
+		this->B = b;
+		this->C = C;
+		this->D = D;
 	}
-	void getInfo() {
+	void print_info() {
 		std::cout << name << std::endl << "Sides: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
 		std::cout << "Angles: " << "A=" << A << " B=" << B << " C=" << C << " D=" << D << std::endl << std::endl;
 	}
@@ -89,64 +95,64 @@ public:
 
 class square : public qadrilateral {
 public:
-	square() {
+	square(int a, int b, int c, int d, int A, int B, int C, int D) : qadrilateral(a, b, c, d, A, B, C, D) {
 		name = "square";
-		a = 20;
-		b = 20;
-		c = 20;
-		d = 20;
-		A = 90;
-		B = 90;
-		C = 90;
-		D = 90;
+		this->a = a;
+		this->b = b;
+		this->c = c;
+		this->d = d;
+		this->A = a;
+		this->B = b;
+		this->C = C;
+		this->D = D;
 	}
 };
 
 class parallelogram : public qadrilateral {
 public:
-	parallelogram() {
+	parallelogram(int a, int b, int c, int d, int A, int B, int C, int D) : qadrilateral(a, b, c, d, A, B, C, D) {
 		name = "parallelogram";
-		a = 20;
-		b = 30;
-		c = 20;
-		d = 30;
-		A = 30;
-		B = 40;
-		C = 30;
-		D = 40;
+		this->a = a;
+		this->b = b;
+		this->c = c;
+		this->d = d;
+		this->A = a;
+		this->B = b;
+		this->C = C;
+		this->D = D;
 	}
 };
 
 class rhombus : public qadrilateral {
 public:
-	rhombus() {
+	rhombus(int a, int b, int c, int d, int A, int B, int C, int D) : qadrilateral(a, b, c, d, A, B, C, D) {
 		name = "rhombus";
-		a = 30;
-		b = 30;
-		c = 30;
-		d = 30;
-		A = 30;
-		B = 40;
-		C = 30;
-		D = 40;
+		this->a = a;
+		this->b = b;
+		this->c = c;
+		this->d = d;
+		this->A = a;
+		this->B = b;
+		this->C = C;
+		this->D = D;
 	}
 };
 
 int main() {
-	Triangle f1;
-	f1.getInfo();
-	rightTriangle f2;
-	f2.getInfo();
-	isoscelesTriangle f3;
-	f3.getInfo();
-	equilateralTriangle f4;
-	f4.getInfo();
-	qadrilateral f5;
-	f5.getInfo();
-	square f6;
-	f6.getInfo();
-	parallelogram f7;
-	f7.getInfo();
-	rhombus f8;
-	f8.getInfo();
+	Triangle f1(10, 20, 30, 50, 60, 70);
+	f1.print_info();
+	rightTriangle f2(10, 20, 30, 50, 60, 90);
+	f2.print_info();
+	isoscelesTriangle f3(10, 20, 10, 50, 60, 50);
+	f3.print_info();
+	equilateralTriangle f4(30, 30, 30, 60, 60, 60);
+	f4.print_info();
+	qadrilateral f5(10, 20, 10, 20, 90, 90, 90, 90);
+	f5.print_info();
+	square f6(20, 20, 20, 20, 90, 90, 90, 90);
+	f6.print_info();
+	parallelogram f7(20, 30, 20, 30, 30, 40, 30, 40);
+	f7.print_info();
+	rhombus f8(30, 30, 30, 30, 30, 40, 30, 40);
+	f8.print_info();
 }

@@ -15,7 +15,7 @@ int main() {
 	std::cin >> x;
 	std::cout << std::endl << "Insert the second number: ";
 	std::cin >> y;
-	std::cout << "Choose the operation (1 - addition, 2 - subtraction, 3 - multiplication, 4 - division, 5 - exponentiation)";
+	std::cout << "Choose the operation (1 - addition, 2 - subtraction, 3 - multiplication, 4 - division, 5 - exponentiation)" << std::endl;
 	std::cin >> n;
 	switch(n) {
 	case 1:
