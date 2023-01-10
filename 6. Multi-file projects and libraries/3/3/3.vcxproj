@@ -128,26 +128,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="3.cpp" />
-    <ClCompile Include="1.h" />
-    <ClCompile Include="a.cpp" />
-    <ClCompile Include="b.cpp" />
-    <ClCompile Include="c.cpp" />
-    <ClCompile Include="d.cpp" />
-    <ClCompile Include="e.cpp" />
-    <ClCompile Include="f.cpp" />
-    <ClCompile Include="g.cpp" />
-    <ClCompile Include="h.cpp" />
-    <ClCompile Include="i.cpp" />
+    <ClCompile Include="Triangle.cpp" />
+    <ClCompile Include="rightTriangle.cpp" />
+    <ClCompile Include="isoscelesTriangle.cpp" />
+    <ClCompile Include="equilateralTriangle.cpp" />
+    <ClCompile Include="qadrilateral.cpp" />
+    <ClCompile Include="square.cpp" />
+    <ClCompile Include="parallelogram.cpp" />
+    <ClCompile Include="rhombus.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="2.h" />
-    <ClInclude Include="3.h" />
-    <ClInclude Include="4.h" />
-    <ClInclude Include="5.h" />
-    <ClInclude Include="6.h" />
-    <ClInclude Include="7.h" />
-    <ClInclude Include="8.h" />
-    <ClInclude Include="9.h" />
+    <ClInclude Include="Figure.h" />
+    <ClInclude Include="Triangle.h" />
+    <ClInclude Include="rightTriangle.h" />
+    <ClInclude Include="isoscelesTriangle.h" />
+    <ClInclude Include="equilateralTriangle.h" />
+    <ClInclude Include="qadrilateral.h" />
+    <ClInclude Include="square.h" />
+    <ClInclude Include="parallelogram.h" />
+    <ClInclude Include="rhombus.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,41 +1,32 @@
 ﻿
 #include <iostream>
-#include "1.h"
-#include "2.h"
-#include "3.h"
-#include "4.h"
-#include "5.h"
-#include "6.h"
-#include "7.h"
-#include "8.h"
-#include "9.h"
+#include "Figure.h"
+#include "Triangle.h"
+#include "rightTriangle.h"
+#include "isoscelesTriangle.h"
+#include "equilateralTriangle.h"
+#include "qadrilateral.h"
+#include "square.h"
+#include "parallelogram.h"
+#include "rhombus.h"
 
 int main()
 {
-	Triangle t1;
-	rightTriangle t2;
-	isoscelesTriangle t3;
-	equilateralTriangle t4;
-	qadrilateral q1;
-	square q2;
-	parallelogram q3;
-	rhombus q4;
-	Triangle* pt1 = &t1;
-	Triangle* pt2 = &t2;
-	Triangle* pt3 = &t3;
-	Triangle* pt4 = &t4;
-	qadrilateral* pq1 = &q1;
-	qadrilateral* pq2 = &q2;
-	qadrilateral* pq3 = &q3;
-	qadrilateral* pq4 = &q4;
-	pt1->print_info(pt1);
-	pt2->print_info(pt2);
-	pt3->print_info(pt3);
-	pt4->print_info(pt4);
-	pq1->print_info(pq1);
-	pq2->print_info(pq2);
-	system("pause");
-	pq3->print_info(pq3);
-	pq4->print_info(pq4);
+	Triangle f1(10, 20, 30, 50, 60, 70);
+	f1.print_info();
+	rightTriangle f2(10, 20, 30, 50, 60, 90);
+	f2.print_info();
+	isoscelesTriangle f3(10, 20, 10, 50, 60, 50);
+	f3.print_info();
+	equilateralTriangle f4(30, 30, 30, 60, 60, 60);
+	f4.print_info();
+	qadrilateral f5(10, 20, 10, 20, 90, 90, 90, 90);
+	f5.print_info();
+	square f6(20, 20, 20, 20, 90, 90, 90, 90);
+	f6.print_info();
+	parallelogram f7(20, 30, 20, 30, 30, 40, 30, 40);
+	f7.print_info();
+	rhombus f8(30, 30, 30, 30, 30, 40, 30, 40);
+	f8.print_info();
 }
 
